@@ -28,8 +28,11 @@ author = 'Team MechaX'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-"myst_parser"
+"myst_parser",
+"sphinx_last_updated_by_git"
 ]
+
+git_last_updated_timezone = "Asia/Shanghai"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
