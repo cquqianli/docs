@@ -1,0 +1,218 @@
+% \title{工欲善其事 必先利其器}
+%\lstset{
+%  frame=l,
+%  basicstyle=\ttfamily,
+%  numbers=left,
+%  numberstyle=\tiny\color{gray},
+%  keywordstyle=\color{blue},
+%  commentstyle=\color{green}\ttfamily,
+%  stringstyle=\color{mauve}
+  %texcl=true 
+%}
+
+\section{我是谁}
+
+\begin{frame}{我是谁}
+    小学：FLL 2012 关爱老人。
+    
+    初中：完全没看懂 \url{https://modthesims.info/showthread.php?t=536436}在干什么。
+    
+    高中：搞了会信竞。
+    
+    大学：看周围的人拿奖。
+\end{frame}
+
+\begin{frame}{Robomaster 机甲大师高校赛}
+    \begin{columns}
+    \begin{column}{0.4\textwidth}
+    \begin{itemize}
+        \item \emoji{zany-face} Battlebots
+        
+        \emoji{zany-face} LEGO Master
+        
+        \item \emoji{smiling-face-with-halo} FIRST Robotics Competition
+        
+        \emoji{smiling-face-with-halo} RoboCON
+        
+        \emoji{smiling-face-with-halo} CADC 中国飞行器设计挑战大赛
+    \end{itemize}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=.6\textwidth]{docs/培训/2022夏/images/class1/RMUC.png}
+        %\includegraphics[]{ProjectRoot/docs/培训/2022夏/images/class1/doc3.jpg}
+        \caption{超级对抗赛场地}
+        \label{fig:my_label}
+    \end{figure}
+    %\includegraphics[width=\textwidth]{images/default}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\section{课前知识回顾}
+
+\begin{frame}{Modern C++} %fragile
+    以 \href{https://github.com/ros/ros_tutorials/blob/humble/turtlesim/src/turtle_frame.cpp}{turtlesim} 为例。
+    
+    见 example.cpp 等。
+\end{frame}
+
+\begin{frame}{Python Trick} %fragile
+    \begin{itemize}
+        \item rhel 链接
+        \item tab with exception
+        \item annotation
+        \item generator
+        \item -> map-reduce
+        \item decorate
+        \item scope and underscore
+    \end{itemize}
+    
+    见 example.py 等。
+\end{frame}
+
+\section{标准与实现}
+
+\subsection{实例}
+
+\begin{frame}{工程实例}
+    \begin{columns}
+    \begin{column}{.5\textwidth}
+    \centering
+    \includegraphics[width=.6\textwidth]{docs/培训/2022夏/images/class1/std_xh.png}
+    
+    XH 2.54
+    \end{column}
+    \begin{column}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\textwidth]{docs/培训/2022夏/images/class1/std_jlc.png}
+    
+    \href{https://shimo.im/docs/0765b0f4a4704ecb/read}{立创EDA封装库命名参考规范}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{编程语言实例}
+    \begin{itemize}
+        \item \href{https://peps.python.org/pep-0328/}{PEP328: Imports: Multi-Line and Absolute/Relative}
+        
+        \href{https://peps.python.org/pep-0517/}{PEP517: A build-system independent format for source trees}
+        
+        \item isocpp v.s. cppreferences
+        
+        \url{http://open-std.org/jtc1/sc22/wg21/docs/papers/2022/n4910.pdf}
+        
+        \url{https://isocpp.org/wiki/faq/operator-overloading}
+        
+        \item codelint
+        \begin{itemize}
+            \item 可以解决什么和不能解决什么。
+            \item \url{http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines}
+            \item \url{https://github.com/ryanmcdermott/clean-code-javascript}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{标准机构}
+    \begin{itemize}
+        \item The International Organization for Standardization
+        \item Internet Engineering Task Force
+        \item The IEEE Standards Association
+    \end{itemize}
+\end{frame}
+
+\subsection{为什么需要标准}
+
+\begin{frame}{自由讨论}
+    
+\end{frame}
+
+\begin{frame}{工程问题下的标准}
+    \begin{itemize}
+        \item 背景：黑箱
+        \item 需求：快速迭代
+        \item 目标：高可靠性
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{实例：serial}
+    \begin{itemize}
+        \item \url{https://github.com/yunwaikongshan/RM2020-Horizon-InfantryVisionDetector/blob/master/include/serial.h}
+        
+        \url{https://github.com/xinyang-go/SJTU-RM-CV-2019/blob/master/others/include/serial.h}
+        
+        \item \url{https://github.com/chenjunnn/rm_vision/blob/main/rm_serial_driver/include/rm_serial_driver/rm_serial_driver.hpp}
+        
+        \url{https://github.com/ros-drivers/transport_drivers/blob/main/serial_driver/include/serial_driver/serial_port.hpp}
+        
+        \item boost::asio
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{实例：apt dependency}
+    \url{https://github.com/cqumechax/docs/blob/5e20/docs/培训/2022夏/images/class1/galactic_ros_core.svg}
+\end{frame}
+
+\subsection{如何设计标准}
+
+\begin{frame}{标准用来解决问题}
+    向前兼容性
+    
+    问题针对性
+    
+    设计科学性
+\end{frame}
+
+\section{其他杂项}
+
+\subsection{版本}
+
+\begin{frame}{Semantic Versioning}
+    \url{https://semver.org/lang/zh-CN/}
+\end{frame}
+
+\begin{frame}{软件包管理器}
+    
+\end{frame}
+
+\subsection{文档}
+
+\begin{frame}{标点空格符号 / 默认值缺省值}
+    \centering
+    \includegraphics[width=.3\textwidth]{docs/培训/2022夏/images/class1/doc1.jpg}
+\end{frame}
+
+\begin{frame}{避免软件偷懒 / 学会收拾残局}
+    \centering
+    \includegraphics[width=.4\textwidth]{docs/培训/2022夏/images/class1/doc2.jpg}
+\end{frame}
+
+\begin{frame}{提取关键信息 / 判断错误根源}
+    
+\end{frame}
+
+
+\section{课后任务}
+
+\begin{frame}{基础任务}
+    使用钉钉作业功能提交。注意文字、代码、视频内容的提交规范。
+    
+    时间要求：最好在下次上课前提交。在存档前提交，都尽可能批改。
+    
+    \begin{itemize}
+        \item 选择一个问题，查询标准和（动手操作）相应实现来解答问题。
+        \item 阅读课前/后资料，并结合新的例子，指出标准和实现文档一般会在哪些地方出现差异
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{进阶任务}
+    鼓励合作：选择课题与人员，实时更新进度，善于提问交流，形成成果分享。
+    
+    （初定）暑期中展示交流一次，开学后展示交流一次。各组展示与提问 5 - 10 分钟。
+    
+    \begin{itemize}
+        \item 为两种或多种常见的编程语言，列表枚举其写法/功能异同，并寻找对应功能的有趣实现（如功能包）。
+    \end{itemize}
+\end{frame}
