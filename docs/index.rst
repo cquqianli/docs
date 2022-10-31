@@ -10,7 +10,9 @@ Welcome to Team MechaX's documentation!
    :glob:
 
    *
+   简介/index
    培训/index
+   名词解释/index
 
 
 特殊链接

@@ -1,12 +1,9 @@
-2022夏
+名词解释
 =======================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
    :glob:
 
    *
-   机械组/index
-   嵌软算法组/index
-   硬件组/index
