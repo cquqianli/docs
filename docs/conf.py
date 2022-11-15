@@ -90,5 +90,6 @@ if True:
     )
     for i in path_needed:
         #if "index.md" in os.listdir(i): # TODO
-        with open(os.path.join(i, "index.md"), "w", encoding="utf-8") as f:
-            f.write("# {}\n\n".format(i.name)+ index_md_content)
+        if os.path.isdir(i): # TODO
+            with open(os.path.join(i, "index.md"), "w", encoding="utf-8") as f:
+                f.write("# {}\n\n".format(i.name)+ index_md_content)
