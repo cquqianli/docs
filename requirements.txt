@@ -1,3 +1,8 @@
-sphinx==5.0.1
-myst-parser==0.18.0
-sphinx-last-updated-by-git==0.3.2
+# Since they are updated frequently.
+Sphinx>=5.3.0
+furo>=2022.9.29
+# Since we think these tools can't have breaking change.
+myst-parser>=0.18.1
+sphinx-copybutton>=0.5.1
+sphinx-last-updated-by-git>=0.3.4
+sphinxext-opengraph>=0.7.2

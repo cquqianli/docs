@@ -28,8 +28,14 @@ author = 'Team MechaX'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-"myst_parser",
-"sphinx_last_updated_by_git"
+    "sphinx.ext.autodoc",
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
+    # not a part of sphinx
+    "myst_parser",
+    "sphinx_copybutton",
+    "sphinx_last_updated_by_git",
+    "sphinxext.opengraph"
 ]
 
 git_last_updated_timezone = "Asia/Shanghai"
@@ -55,9 +61,17 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
-
+html_theme = 'furo'
+html_theme_options = {
+    "source_repository": "https://github.com/cqumechax/docs/",
+    "source_branch": "master",
+    "source_directory": "docs/",
+    "light_css_variables": {
+        # "font-stack": "'REEJI ZhenyanGB2.0-GX', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,Segoe UI Emoji"
+    }
+}
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+html_css_files = ['fonts.css']

@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;500;700;900&display=swap");
+
+@font-face {
+    /** https://www.zcool.com.cn/work/ZNTM2NjI0ODQ=.html restricted free-use except for trademark registration 6763 CJK + 100 Arial */
+    font-family: 'Douyu ZGT';
+    src: url("https://sta-op.douyucdn.cn/front-publish/static-master/fontDownloadPage/douyuFont.ttf");
+}
+
+@font-face {
+    /** https://stackoverflow.com/questions/73852258/variable-weight-version-of-a-ttf-font-not-working-in-browser */
+    /** http://www.reeji.com/mfsysm free-use, prohibit distribution and edit. */
+    font-family: 'REEJI ZhenyanGB2.0-GX';
+    font-weight: 100 800;
+    font-display: fallback;
+    src: url("https://reeji.oss-cn-zhangjiakou.aliyuncs.com/publish/f00001042/font/ttf/REEJI-ZhenyanGB2.0-GX-01/%E9%94%90%E5%AD%97%E6%BD%AE%E7%89%8C%E5%8F%AF%E5%8F%98%E7%9C%9F%E8%A8%802.0%E7%AE%80(REEJI-ZhenyanGB2.0-GX).ttf") format("truetype-variations"),
+         url("https://reeji.oss-cn-zhangjiakou.aliyuncs.com/publish/f00001042/font/ttf/REEJI-ZhenyanGB2.0-GX-01/%E9%94%90%E5%AD%97%E6%BD%AE%E7%89%8C%E5%8F%AF%E5%8F%98%E7%9C%9F%E8%A8%802.0%E7%AE%80(REEJI-ZhenyanGB2.0-GX).ttf") format("truetype");
+}
+
+@font-face {
+    /** http://tsanger.cn/product/189 free-use */
+    font-family: 'Canger Yumo';
+    src: url("http://tsanger.cn/download/%E4%BB%93%E8%80%B3%E4%B8%8E%E5%A2%A8W01.ttf");
+    font-weight: 100;
+}
+
+@font-face {
+    /** http://tsanger.cn/product/190 free-use */
+    font-family: 'Canger Yumo';
+    src: url("http://tsanger.cn/download/%E4%BB%93%E8%80%B3%E4%B8%8E%E5%A2%A8W02.ttf");
+    font-weight: 200;
+}
+
+@font-face {
+    /** http://tsanger.cn/product/191 free-use */
+    font-family: 'Canger Yumo';
+    src: url("http://tsanger.cn/download/%E4%BB%93%E8%80%B3%E4%B8%8E%E5%A2%A8W03.ttf");
+    font-weight: 300;
+}
+
+@font-face {
+    /** http://tsanger.cn/product/192 free-use */
+    font-family: 'Canger Yumo';
+    src: url("http://tsanger.cn/download/%E4%BB%93%E8%80%B3%E4%B8%8E%E5%A2%A8W04.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    /** http://tsanger.cn/product/193 free-use */
+    font-family: 'Canger Yumo';
+    src: url("http://tsanger.cn/download/%E4%BB%93%E8%80%B3%E4%B8%8E%E5%A2%A8W05.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    /** SIL Open Font License */
+    font-family: 'Open Huninn';
+    src: url("https://cdn.jsdelivr.net/gh/justfont/open-huninn-font@master/font/jf-openhuninn-1.1.ttf");
+}
+
+em {
+    /* font-family: 'Douyu ZGT', sans-serif; */
+}
+
+body {
+    /* font-family: 'REEJI ZhenyanGB2.0-GX', var(--font-stack);  */
+    font-family: 'Noto Sans SC', var(--font-stack); 
+    /* font-weight: 150; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'REEJI ZhenyanGB2.0-GX', var(--font-stack); 
+    font-weight: 500;
+}
+
+b, strong {
+    /* font-weight: 550; */
+}
