@@ -38,6 +38,9 @@ extensions = [
     "sphinxext.opengraph"
 ]
 
+myst_enable_extensions = [
+    "colon_fence"
+]
 git_last_updated_timezone = "Asia/Shanghai"
 
 # Add any paths that contain templates here, relative to this directory.

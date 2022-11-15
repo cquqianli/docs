@@ -46,8 +46,11 @@ Robomaster C型开发板、三色LED灯泡、红外光发射二极管、红外�
 最终截止时间（待定）：2022年11月18日23:59
 
 ## 参考资料
+
 > 部分课题内容需要使用境外网络服务访问
-> </培训/2022夏/嵌软算法组/课程实用链接>
+> 
+> [请见课程实用链接](/外部资料/课程实用链接)
+
 1. (B.2) 计算机教育中缺失的一课
 2. (C.1) Robomaster C型开发板官方教学包。
 3. Youtube教学视频（未找到中文版）：[Introduction to FreeRTOS](https://www.youtube.com/watch?v=F321087yYy4&list=PLEBQazB0HUyQ4hAPU1cJED6t3DU0h34bz)
