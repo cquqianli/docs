@@ -78,3 +78,17 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 html_css_files = ['fonts.css']
+
+# User Script, thanks to <https://stackoverflow.com/a/70990772>
+import os
+from pathlib import Path
+if True:
+    index_md_content = "```{toctree}\n:maxdepth: 3\n:glob:\n*\n*/index\n```\n"
+    path_needed = filter(
+        lambda path: not any((part for part in path.parts if part.startswith("_"))),
+        Path(".").rglob("*/")
+    )
+    for i in path_needed:
+        #if "index.md" in os.listdir(i): # TODO
+        with open(os.path.join(i, "index.md"), "w", encoding="utf-8") as f:
+            f.write("# {}\n\n".format(i.name)+ index_md_content)
