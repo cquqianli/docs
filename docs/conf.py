@@ -89,7 +89,11 @@ if True:
         Path(".").rglob("*/")
     )
     for i in path_needed:
-        #if "index.md" in os.listdir(i): # TODO
+        if "index.md" in os.listdir(i):
+            with open(os.path.join(i, "index.md"), "r", encoding="utf-8") as f:
+                # print(bytes(f.readline()[2 : -1], encoding='utf-8'), i.name)
+                if f.readline()[2 : -1] == i.name:
+                    continue
         if os.path.isdir(i): # TODO
             with open(os.path.join(i, "index.md"), "w", encoding="utf-8") as f:
                 f.write("# {}\n\n".format(i.name)+ index_md_content)
