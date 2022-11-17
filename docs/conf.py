@@ -33,6 +33,7 @@ extensions = [
     "sphinx.ext.viewcode",
     # not a part of sphinx
     "myst_parser",
+    "sphinx_design",
     "sphinx_copybutton",
     "sphinx_last_updated_by_git",
     "sphinxext.opengraph"

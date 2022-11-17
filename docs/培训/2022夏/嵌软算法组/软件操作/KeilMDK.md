@@ -69,7 +69,7 @@ Keil is a German software subsidiary of Arm Holdings. It was founded in 1982 by 
 
 ## 附录
 
-:::{admonition} 使用本软件，推荐将 `.gitignore` 配置如下
+:::{Dropdown} 使用本软件，推荐将 `.gitignore` 配置如下
 
 ```sh
 $ ls
