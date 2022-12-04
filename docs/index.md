@@ -1,7 +1,7 @@
 ---
+title: Welcome to Team MechaX's documentation!
 hide-toc: true
 ---
-# Welcome to Team MechaX's documentation!
 
 ```{toctree}
 :maxdepth: 4

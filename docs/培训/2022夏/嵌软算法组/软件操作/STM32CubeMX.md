@@ -12,4 +12,3 @@ user_space:
           log_path: "%USERPROFILE%/.stm32cubemx/STM32CubeMX.log"
           dist_path: "%USERPROFILE%/STM32CubeMX/"
 ---
-# STM32CubeMX

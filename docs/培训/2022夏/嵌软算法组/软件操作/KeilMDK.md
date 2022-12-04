@@ -11,7 +11,6 @@ user_space:
           path: "%SYSTEMDRIVE%/keil_v5/"
           dist_path: "%LOCALAPPDATA%/Arm/Packs/"
 ---
-# Keil MDK
 
 Keil is a German software subsidiary of Arm Holdings. It was founded in 1982 by Günter and Reinhard Keil, initially as a German GbR. ... In October 2005, Keil (Keil Elektronik GmbH in Munich, Germany, and Keil Software, Inc. in Plano, Texas) were acquired by Arm. ([wiki](https://en.wikipedia.org/wiki/Keil_(company)))
 

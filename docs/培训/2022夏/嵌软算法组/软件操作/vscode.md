@@ -1,7 +1,7 @@
 ---
 title: VSCode
 ---
-# VSCode
+
 
 :::{hint} You can contribute to this file by reading <https://code.visualstudio.com/docs/>. PRs are welcome!
 :::

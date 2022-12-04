@@ -42,6 +42,7 @@ extensions = [
 myst_enable_extensions = [
     "colon_fence"
 ]
+myst_title_to_header = True
 git_last_updated_timezone = "Asia/Shanghai"
 
 # Add any paths that contain templates here, relative to this directory.
