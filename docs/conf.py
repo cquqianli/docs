@@ -68,7 +68,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #
 html_theme = 'furo'
 html_theme_options = {
-    "source_repository": "https://github.com/cqumechax/docs/",
+    "source_repository": "https://gitlab.com/cqumechax/docs/",
     "source_branch": "master",
     "source_directory": "docs/",
     "light_css_variables": {
