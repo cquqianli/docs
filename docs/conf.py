@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Team MechaX'
-copyright = '2022, Team MechaX'
+project = '千里战队'
+copyright = '2022 - 2023, 重庆大学学生交叉创新中心千里机器人战队'
 author = 'Team MechaX'
 
 
