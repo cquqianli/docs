@@ -1,5 +1,6 @@
 ---
-title: 课题一：配置 Ubuntu 环境
+title: (0) 配置 Ubuntu 环境
+author: Max Zheng
 ---
 
 ## 简介
