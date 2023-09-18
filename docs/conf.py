@@ -44,6 +44,9 @@ myst_enable_extensions = [
     "colon_fence", # To parse correctly under non-myst parsing environment
     "dollarmath", # See more at optional.html#mathjax-and-math-parsing
     "amsmath", # See more at optional.html#mathjax-and-math-parsing
+    "attrs_inline",
+    "html_admonition",
+    "html_image",
     #"strikethrough" # only support HTML output
 ]
 myst_title_to_header = True
@@ -51,7 +54,7 @@ myst_title_to_header = True
 # This only generate implicity slug, see <https://myst-parser.readthedocs.io/en/stable/syntax/optional.html#auto-generated-header-anchors>
 # The real slug generation process: <https://github.com/sphinx-doc/sphinx/issues/8709>
 # Already replaced by `replace_docutils_make_id()`
-#myst_heading_anchors = 4
+myst_heading_anchors = 4
 #import os, sys
 #sys.path.insert(0, os.path.abspath('./'))
 #from conf_func import slugify_conf
