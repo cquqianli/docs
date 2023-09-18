@@ -4,9 +4,10 @@ furo>=2023.07.26
 
 # Since we think these tools can't have breaking change.
 myst-parser>=0.18.1
-sphinx_design>=0.3.0
 sphinx-copybutton>=0.5.1
+sphinx_design>=0.3.0
 sphinx-last-updated-by-git>=0.3.4
+sphinx-sitemap>=2.5.1
 sphinxext-opengraph>=0.7.2
 sphinxext-rediraffe>=0.2.7
 

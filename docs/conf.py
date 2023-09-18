@@ -20,6 +20,7 @@
 project = '千里战队'
 copyright = '2022 - 2023, 重庆大学学生交叉创新中心千里机器人战队'
 author = 'Team MechaX'
+html_baseurl = 'https://docs.cquqian.li/'
 
 
 # -- General configuration ---------------------------------------------------
@@ -33,9 +34,10 @@ extensions = [
     "sphinx.ext.viewcode",
     # not a part of sphinx
     "myst_parser",
-    "sphinx_design",
     "sphinx_copybutton",
+    "sphinx_design",
     "sphinx_last_updated_by_git",
+    "sphinx_sitemap",
     "sphinxext.opengraph",
     "sphinxext.rediraffe", # rather than sphinxcontrib.redirect
 ]
@@ -64,6 +66,8 @@ git_last_updated_timezone = "Asia/Shanghai"
 
 rediraffe_redirects = "redirects"
 #rediraffe_template = "redirects.html"
+
+sitemap_url_scheme = "{link}"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
