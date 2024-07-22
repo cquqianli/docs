@@ -14,10 +14,10 @@ build:
   # <https://vitepress-and-readthedocs-example.readthedocs.io/en/latest/how-to.html>
   commands:
     - mkdir --parents $READTHEDOCS_OUTPUT/html/
-    - cd docs && npm ci
+    - npm i --verbose
     - patch -i .vocs/1.0.0-alpha.55.diff -p1
-    - cd docs && npx run vocs build # -- --base "/$READTHEDOCS_LANGUAGE/$READTHEDOCS_VERSION/"
-    - cp --recursive docs/dist/* $READTHEDOCS_OUTPUT/html/
+    - npx vocs build # -- --base "/$READTHEDOCS_LANGUAGE/$READTHEDOCS_VERSION/"
+    - cp --recursive docs/dist/. $READTHEDOCS_OUTPUT/html/ # To include dot hidden file
 
 # Build documentation in the docs/ directory with Sphinx
 # sphinx:
