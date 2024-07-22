@@ -1,4 +1,9 @@
 _build
-**/index.md
+__pycache__
+#**/index.md
 !/index.md
 !培训/2023秋/index.md
+
+.vitepress/cache
+.vitepress/dist
+dist

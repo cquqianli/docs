@@ -1,0 +1,88 @@
+diff --git a/node_modules/vocs/_lib/vite/plugins/remark/links.js b/_lib/vite/plugins/remark/links.js
+index a3ab3e9..f0dabba 100644
+--- a/node_modules/vocs/_lib/vite/plugins/remark/links.js
++++ b/node_modules/vocs/_lib/vite/plugins/remark/links.js
+@@ -16,7 +16,7 @@ export function remarkLinks() {
+     const deadlinks = new Set();
+     return async (tree, file) => {
+         const { config } = await resolveVocsConfig();
+-        const { rootDir } = config;
++        const { rootDir, transformId } = config;
+         visit(tree, 'link', (node) => {
+             const filePath = file.history[0];
+             if (!filePath)
+@@ -59,6 +59,7 @@ export function remarkLinks() {
+                 return;
+             }
+             node.url = `${parseLink(resolvedPagePath, baseDir)}${after ? `#${after}` : ''}`;
++            node.url = transformId?.(node.url) || node.url;
+         });
+     };
+ }
+diff --git a/node_modules/vocs/_lib/vite/plugins/virtual-routes.js b/_lib/vite/plugins/virtual-routes.js
+index 44071d3..6cbd76c 100644
+--- a/node_modules/vocs/_lib/vite/plugins/virtual-routes.js
++++ b/node_modules/vocs/_lib/vite/plugins/virtual-routes.js
+@@ -40,6 +40,7 @@ export function virtualRoutes() {
+                     if (fileGitTimestamp)
+                         lastUpdatedAt = fileGitTimestamp;
+                     let pagePath = path.replace(replacer, '').replace(/\.(.*)/, '');
++                    pagePath = config.transformId?.(pagePath) || pagePath;
+                     if (pagePath.endsWith('index'))
+                         pagePath = pagePath.replace('index', '').replace(/\/$/, '');
+                     code += `  { lazy: () => import("${path}"), path: "/${pagePath}", type: "${type}", filePath: "${filePath}", lastUpdatedAt: ${lastUpdatedAt} },`;
+diff --git a/node_modules/vocs/_lib/node_modules/vocs/vite/prerender.js b/_lib/vite/prerender.js
+index c0b0fde..571cbbb 100644
+--- a/node_modules/vocs/_lib/vite/prerender.js
++++ b/node_modules/vocs/_lib/vite/prerender.js
+@@ -7,12 +7,12 @@ import { resolveVocsConfig } from './utils/resolveVocsConfig.js';
+ const __dirname = dirname(fileURLToPath(import.meta.url));
+ export async function prerender({ logger, outDir }) {
+     const { config } = await resolveVocsConfig();
+-    const { basePath, rootDir, theme } = config;
++    const { basePath, rootDir, theme, transformId } = config;
+     const outDir_resolved = resolveOutDir(rootDir, outDir);
+     const template = readFileSync(resolve(outDir_resolved, 'index.html'), 'utf-8');
+     const mod = await import(resolve(__dirname, './.vocs/dist/index.server.js'));
+     // Get routes to prerender.
+-    const routes = getRoutes(resolve(rootDir, 'pages'));
++    const routes = getRoutes(resolve(rootDir, 'pages'), transformId);
+     // Prerender each route.
+     for (const route of routes) {
+         const { head, body } = await mod.prerender(route);
+@@ -43,7 +43,7 @@ export async function prerender({ logger, outDir }) {
+ }
+ ////////////////////////////////////////////////////////////////////////
+ // Utils
+-function getRoutes(routesDir) {
++function getRoutes(routesDir, transformId) {
+     const routes = [];
+     function recurseRoutes(dir) {
+         for (const fileOrDir of readdirSync(dir)) {
+@@ -52,7 +52,8 @@ function getRoutes(routesDir) {
+                 recurseRoutes(path);
+                 continue;
+             }
+-            const file = path.replace(routesDir, '').replace(/\..*$/, '');
++            let file = path.replace(routesDir, '').replace(/\..*$/, '');
++            file = transformId?.(file) || file;
+             routes.push(file.endsWith('/index') ? file.replace('index', '') : file);
+         }
+     }
+diff --git a/node_modules/vocs/config.ts b/node_modules/vocs/config.ts
+index 7f27e28..7251cb3 100644
+--- a/node_modules/vocs/config.ts
++++ b/node_modules/vocs/config.ts
+@@ -162,6 +162,12 @@ export type Config<
+      * Vite configuration.
+      */
+     vite?: UserConfig
++    /**
++     * out-of-tree transform code
++     * @param id original identification path
++     * @returns new identification path
++     */
++    transformId?: (id: string) => string
+   },
+   parsed extends true ? RequiredProperties : never
+ >

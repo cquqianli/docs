@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "dry-uninstall": "0.3.0"
+  },
+  "dependencies": {
+    "inflection": "^3.0.0",
+    "transliteration": "^2.3.5",
+    "vitepress": "^1.3.1",
+    "vocs": "^1.0.0-alpha.55"
+  },
+  "overrides": {
+    "yargs": "npm:dry-uninstall",
+    "create-vocs": "npm:dry-uninstall"
+  }
+}

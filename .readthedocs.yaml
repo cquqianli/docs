@@ -7,22 +7,30 @@ version: 2
 
 # Set the version of Python and other tools you might need
 build:
-  os: ubuntu-20.04
+  os: ubuntu-lts-latest
   tools:
-    python: "3.9"
+    nodejs: latest
     # You can also specify other tool versions:
+  # <https://vitepress-and-readthedocs-example.readthedocs.io/en/latest/how-to.html>
+  commands:
+    - mkdir --parents $READTHEDOCS_OUTPUT/html/
+    - cd docs && npm ci
+    - patch -i .vocs/1.0.0-alpha.55.diff -p1
+    - cd docs && npx run vocs build # -- --base "/$READTHEDOCS_LANGUAGE/$READTHEDOCS_VERSION/"
+    - cp --recursive docs/dist/* $READTHEDOCS_OUTPUT/html/
 
 # Build documentation in the docs/ directory with Sphinx
-sphinx:
-   configuration: docs/conf.py
+# sphinx:
+#    configuration: docs/conf.py
 
 # If using Sphinx, optionally build your docs in additional formats such as PDF
-formats:
-   - htmlzip
-   - pdf
-   - epub
+# formats:
+#    - htmlzip
+#    - pdf
+#    - epub
 
 # Optionally declare the Python requirements required to build your docs
-python:
-   install:
-   - requirements: requirements.txt
+# python:
+#    install:
+#    - requirements: requirements.txt
+
