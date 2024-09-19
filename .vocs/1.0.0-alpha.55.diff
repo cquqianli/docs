@@ -86,3 +86,61 @@ index 7f27e28..7251cb3 100644
    },
    parsed extends true ? RequiredProperties : never
  >
+diff --git a/node_modules/vocs/_lib/vite/plugins/search.js b/node_modules/vocs/_lib/vite/plugins/search.js
+index 319657d..772de05 100644
+--- a/node_modules/vocs/_lib/vite/plugins/search.js
++++ b/node_modules/vocs/_lib/vite/plugins/search.js
+@@ -53,7 +53,7 @@ export async function search() {
+                 const buildSearchIndex = cache.search.get('buildSearchIndex');
+                 if (!dev && !buildSearchIndex)
+                     return;
+-                searchPromise = buildIndex({ baseDir: config.rootDir });
++                searchPromise = buildIndex({ baseDir: config.rootDir }, config.transformId);
+                 if (dev) {
+                     logger.info('building search index...', { timestamp: true });
+                     index = await searchPromise;
+@@ -92,7 +92,7 @@ export async function search() {
+         async handleHotUpdate({ file }) {
+             if (!file.endsWith('.md') && !file.endsWith('.mdx'))
+                 return;
+-            const fileId = getDocId(config.rootDir, file);
++            const fileId = getDocId(config.rootDir, file, config.transformId);
+             if (!existsSync(file))
+                 return;
+             const mdx = readFileSync(file, 'utf-8');
+diff --git a/node_modules/vocs/_lib/vite/utils/search.js b/node_modules/vocs/_lib/vite/utils/search.js
+index b7ce5a7..fe97d93 100644
+--- a/node_modules/vocs/_lib/vite/utils/search.js
++++ b/node_modules/vocs/_lib/vite/utils/search.js
+@@ -16,7 +16,7 @@ import { hash } from './hash.js';
+ import { slash } from './slash.js';
+ const limit = pLimit(30);
+ export const debug = debug_('vocs:search');
+-export async function buildIndex({ baseDir, }) {
++export async function buildIndex({ baseDir, }, transformId) {
+     const pagesPaths = await globby(`${resolve(baseDir, 'pages')}/**/*.{md,mdx}`);
+     const documents = await Promise.all(pagesPaths.map((pagePath) => limit(async (pagePath) => {
+         const mdx = readFileSync(pagePath, 'utf-8');
+@@ -30,7 +30,7 @@ export async function buildIndex({ baseDir, }) {
+             cache.search.set(key, { mdx, document: [] });
+             return [];
+         }
+-        const fileId = getDocId(baseDir, pagePath);
++        const fileId = getDocId(baseDir, pagePath, transformId);
+         const relFile = slash(relative(baseDir, fileId));
+         const href = relFile
+             .replace(relative(baseDir, resolve(baseDir, 'pages')), '')
+@@ -87,10 +87,12 @@ export async function processMdx(file) {
+         return '';
+     }
+ }
+-export function getDocId(baseDir, file) {
++export function getDocId(baseDir, file, transformId) {
+     const relFile = slash(relative(baseDir, file));
+     let id = slash(join(baseDir, relFile));
+     id = id.replace(/(^|\/)index\.(mdx|html)?$/, '$1');
++    id = transformId?.(id) || id;
++    console.log(id);
+     return id;
+ }
+ const headingRegex = /<h(\d*).*?>(.*?<a.*? href=".*?".*?>.*?<\/a>)<\/h\1>/gi;

@@ -111,9 +111,38 @@ function generateSidebar(
 ): SidebarItem | SidebarItem[] {
   relativeDir = relativeDir.replace(/\\/g, "/");
   const baseDir = join(rootDir, relativeDir);
-  const childrenDirs = getDirectories(baseDir); //.filter((subDir) =>
-  //  subDir.startsWith(navPrefix)
-  //);
+
+  if (baseDir.includes("*")) {
+    const searchDir = relativeDir.split("*")[0];
+    const topDirs = getDirectories(join(rootDir, searchDir)) || ["./"];
+    let result = topDirs
+      .map((topDir) =>
+        [
+          generateSidebar(
+            rootDir,
+            options,
+            join(searchDir, topDir),
+            currentLevel
+          ),
+        ].flat()
+      )
+      .reduce((result, child) => {
+        return [result, child].flat().reduce((pre, cur) => {
+          if (cur.items) {
+            let sameTextItem = pre.find((i) => i.text === cur.text);
+            if (sameTextItem) {
+              (sameTextItem.items as SidebarItem[]).push(...cur.items);
+            }
+          } else {
+            pre.push(cur); // May have same name multiple files.
+          }
+          return pre;
+        }, [] as SidebarItem[]);
+      });
+    return result;
+  }
+
+  const childrenDirs = getDirectories(baseDir);
   const childrenFiles = getFiles(baseDir);
   let result;
 
@@ -124,14 +153,14 @@ function generateSidebar(
     //     link: relativeDir + childrenFiles[0],
     //   };
     // } else {
-      let items = childrenFiles
-        .map((subFile) => ({
-          text: getName(subFile, options),
-          link: relativeDir + subFile.replace(/\.(md)/, ""),
-        }))
-        .filter(Boolean);
-      result =
-        currentLevel === 1 ? items : { text: getName(baseDir, options), items };
+    let items = childrenFiles
+      .map((subFile) => ({
+        text: getName(subFile, options),
+        link: relativeDir + subFile.replace(/\.(md)/, ""),
+      }))
+      .filter(Boolean);
+    result =
+      currentLevel === 1 ? items : { text: getName(baseDir, options), items };
     // }
   } else if (childrenDirs.length > 0) {
     let items = childrenDirs
@@ -144,13 +173,15 @@ function generateSidebar(
         )
       )
       .filter(Boolean);
-      //if(!Array.isArray(items)){items = [items];}
-      items = items.concat(childrenFiles
+    //if(!Array.isArray(items)){items = [items];}
+    items = items.concat(
+      childrenFiles
         .map((subFile) => ({
           text: getName(subFile, options),
           link: relativeDir + subFile.replace(/\.(md)/, ""),
         }))
-        .filter(Boolean));
+        .filter(Boolean)
+    );
     result =
       currentLevel === 1 ? items : { text: getName(baseDir, options), items };
   }
